@@ -5,4 +5,4 @@ def sub(x,y):
 def mul(x,y):
     print(x*y)
 def div(x,y):
-    print(x/y)
+    print(x//y)
