@@ -1,0 +1,1 @@
+{'username': 'priyanshu', 'password': '12345', 'mobile': '111', 'email': '1111'}
