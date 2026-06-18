@@ -31,7 +31,7 @@ def register_details(username, password, mobile, email):
 def signup_pg():
     global signup_root
     signup_root = Toplevel()
-    signup_root.geometry("1000x800")
+    signup_root.geometry("1920x1080")
     signup_root.title("Sign Up Screen")
     signup_root.config(bg="black")  # Changed to black to match login page style
 

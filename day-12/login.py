@@ -115,13 +115,13 @@ try:
     img = img.resize((500, 300))
     photoimg = ImageTk.PhotoImage(image=img)
 
-    label = Label(main_frame, image=photoimg, bg='black', pady=10)
-    label.pack(pady=10)
+    label = Label(main_frame, image=photoimg, bg='black')
+    label.pack()
 except Exception as e:
     print(f"Image load failed in login: {e}")
 
 user_frame = Frame(main_frame, bg='lavender')
-user_frame.pack()
+user_frame.pack(pady=10)
 
 user_label = Label(
     user_frame,
