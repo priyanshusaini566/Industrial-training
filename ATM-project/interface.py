@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import Image,ImageTk
 from tkinter import messagebox
 import forgot
+import dashboard
 
 root = Tk()
 root.geometry("1920x1080")
@@ -33,6 +34,28 @@ def login_verify():
     pin=pass_entry.get().strip()
     if pin=="":
         messagebox.showerror("Error !!","Enter proper details")
+        return
+    try:
+        with open("database.txt","r") as file:
+            data=file.readlines()
+        found=False
+
+        for line in data:
+             pintu=line.strip()
+
+             if pintu==pin:
+                 found=True
+                 break
+
+        if found:
+                messagebox.showinfo("Welcome","Login successful")
+                dashboard.options()
+
+        else:
+                messagebox.showinfo("Error","PIN is incorrect")
+
+    except FileNotFoundError:
+        messagebox.showerror("Error!","No details found")
 
 def forgot_verify():
     forgot.newinterface()

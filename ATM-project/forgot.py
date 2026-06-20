@@ -12,9 +12,10 @@ def newinterface():
     main_frame.pack(pady=20)
     img=Image.open(r"C:\Users\LENOVO\Downloads\Gemini_Generated_Image_k2u9ctk2u9ctk2u9.png")
     img=img.resize((400,300))
-    photoimg=ImageTk.PhotoImage(image=img)
+    photoimg=ImageTk.PhotoImage(img)
 
     main_label=Label(main_frame,image=photoimg)
+    main_label.image=photoimg
     main_label.pack(pady=10)
 
     mno_frame=Frame(main_frame,bg="#1E1E1E")
@@ -42,27 +43,26 @@ def newinterface():
         pin=pin_entry.get().strip()
         pin2=pin2_entry.get().strip()
         if len(pin)!=4:
-            messagebox.showerror("Error!!","PIN should have 4 number")
+            messagebox.showerror("Error!!","PIN should have 4 number",parent=sub_root)
+            sub_root.lift()
+            sub_root.focus_force()
 
 
-        elif pin==pin2:
-            messagebox.showinfo("Hurray!!","PIN reset successfully")
+        elif pin!=pin2:
+             messagebox.showerror("Error!!","Both PIN number entries should be same",parent=sub_root)
+             sub_root.lift()
+             sub_root.focus_force()
 
         else:
-             messagebox.showerror("Error!!","Both PIN number entries should be same")
+            with open("database.txt","a") as file:
+                file.write(f"{pin}\n")
+
+            messagebox.showinfo("Hurray!!","PIN reset successfully",parent=sub_root)
+            sub_root.destroy()
 
 
     reset_btn=Button(main_frame,text="Reset new PIN",width=15,bg="#00CC66",fg="black" ,font=("Garamond",20,'bold'),command=pin_verify)
     reset_btn.pack(pady=10);
 
-            
-
-
-
-
-
-
-
-    sub_root.mainloop()
 
 
