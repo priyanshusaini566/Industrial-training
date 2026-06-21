@@ -49,6 +49,7 @@ def login_verify():
 
         if found:
                 messagebox.showinfo("Welcome","Login successful")
+                root.withdraw()
                 dashboard.options()
 
         else:
@@ -66,8 +67,6 @@ login_btn.pack(side=LEFT,padx=42);
 
 forgot_btn=Button(main_frame,bg="#00CC66",fg="black" ,font=("Garamond",20,'bold'),width=10,text="Forgot PIN",command=forgot_verify)
 forgot_btn.pack(side=LEFT,padx=10);
-
-
 
 
 root.mainloop()

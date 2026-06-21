@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import Image,ImageTk
 import checkbalance
+import deposit
 
 def options():
     sub_root=Toplevel()
@@ -23,13 +24,17 @@ def options():
     main_label.pack(pady=10)
 
     def btn1_verify():
-        checkbalance.verify()
+        checkbalance.balance()
+
+    def activate_deposit():
+        deposit.activate()
 
 
-    button1=Button(main_frame,text="Check Balance",width=15,bg="#00CC66",fg="black" ,font=("Garamond",20,'bold'))
+
+    button1=Button(main_frame,text="Check Balance",width=15,bg="#00CC66",fg="black" ,font=("Garamond",20,'bold'),command=btn1_verify)
     button1.pack(pady=10)
 
-    button2=Button(main_frame,text="Deposit",width=15,bg="#00CC66",fg="black" ,font=("Garamond",20,'bold'))
+    button2=Button(main_frame,text="Deposit",width=15,bg="#00CC66",fg="black" ,font=("Garamond",20,'bold'),command=activate_deposit)
     button2.pack(pady=10)
 
     button3=Button(main_frame,text="Withdraw",width=15,bg="#00CC66",fg="black" ,font=("Garamond",20,'bold'))
@@ -43,4 +48,5 @@ def options():
 
     button6=Button(main_frame,text="Logout",width=15,bg="#00CC66",fg="black" ,font=("Garamond",20,'bold'))
     button6.pack(pady=10)
+
 
