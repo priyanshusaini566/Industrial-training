@@ -46,19 +46,43 @@ def activate():
     btn4=Button(btn2_frame,text="5000 Rs.",bg="ivory",fg="black",width=10,font=("Garamond",30,'bold'),command=btn4_fxn)
     btn4.pack(side=LEFT,padx=20)
 
+    def deposit():
+       amount_str = entry.get().strip()
+    
+    # "500 RS." mein se sirf 500 nikalne ke liye
+    # Agar user ne khud type kiya hai toh sirf digits lein
+       amount_digits = ''.join(filter(str.isdigit, amount_str))
+    
+       if not amount_digits or int(amount_digits) <= 0:
+           messagebox.showerror("Error!!", "Enter a valid amount!!")
+           return
+    
+       amount = int(amount_digits)
+
+    # Purana balance read karein, agar file nahi hai toh 0 maanein
+       current_balance = 0
+       try:
+           with open("balance.txt", "r") as file:
+            content = file.read().strip()
+            if content:
+                current_balance = int(content)
+       except FileNotFoundError:
+        current_balance = 0
+
+    # Naya balance calculate karke save karein
+       new_balance = current_balance + amount
+       with open("balance.txt", "w") as file:  # "w" se purana balance overwrite hoga naye se
+          file.write(str(new_balance))
+
+       messagebox.showinfo("Hurray!!", f"{amount} Rs. deposited successfully!")
+       sub_root.destroy()
+
 
     btn3_frame=Frame(sub_root,bg="#121212")
     btn3_frame.pack(pady=10)
 
-    def deposit():
-        amount=entry.get()
-        if amount=="":
-            messagebox.showerror("Error!!","Enter valid number!!")
-        else:
-            with open("depositdatabase.txt","a") as file:
-              file.write(amount + "\n")
-            messagebox.showinfo("Hurray!!","Amount deposited successfully")
-            sub_root.destroy()
+    
+        
         
 
     btn5=Button(btn3_frame,text="Deposit",bg="ivory",fg="black",font=("Garamond",30,'bold'),command=deposit)
