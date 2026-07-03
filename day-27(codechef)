@@ -1,0 +1,46 @@
+"""
+Divide Two Variables
+Declare two variables x and y, and assign 
+20
+20 to x and 
+6
+6 to y.
+Divide x by y (i.e., perform integer division x // y) and print the result.
+"""
+
+x=20
+y=6
+print(x//y)
+
+"""
+Convert Temperature
+Declare a variable "temperature" and initialize it with a value of 25.5 (in Celsius) and print it in Celsius and Kelvin (add 273 to the temperature in Celsius).
+
+[Note: Print the output in exactly the same format as given below. There is single space around hyphen(-)]
+
+Output Format
+Celsius - 25.5
+Kelvin - 298.5
+"""
+
+# Declare a variable "temperature" and initialize it with a value of 25.5
+temperature=25.5
+
+print("Celsius -",temperature)
+print("Kelvin -",temperature+ 273)
+
+"""
+Area and Perimeter of Square
+Write a program to find the area and perimeter of square whose side length is 4.5. On the first line, print square's area and on the second line, its perimeter.
+
+Expected output
+20.25
+18.0
+Note:
+Area of a Square = side × side
+and, Perimeter = 4 x side
+"""
+# cook your dish here
+side=4.5
+print(side*side)
+print(4*side)
